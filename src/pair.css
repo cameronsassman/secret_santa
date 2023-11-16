@@ -33,3 +33,23 @@
 .pairing {
   font-size: 80px;
 }
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 90%; /* Adjust width for very small screens */
+    padding: 10px; /* Adjust padding for very small screens */
+    margin-top: 50%;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .pairing {
+    font-size: 30px; /* Further adjust font size for very small screens */
+  }
+  .content {
+    padding: 5px;
+    text-align: center;
+  }
+}

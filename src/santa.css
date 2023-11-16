@@ -1,99 +1,86 @@
 .container {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .input {
   display: block;
   align-self: stretch;
-
-  width: 450px;
-  height: 500px;
-  flex: auto;
-
+  width: 85%;
+  height: 300px;
   border: 10px solid #0cb50c;
   border-radius: 10px;
-
   padding: 15px;
-
   background-color: rgba(255, 255, 255, 0.7);
   outline: none;
-}
-
-.part {
-  display: flex;
-  flex-direction: column;
-
-  padding: 20px;
+  margin-bottom: 20px;
 }
 
 .generate {
   display: block;
-
-  margin-top: 20px;
-  width: 500px;
-
-  flex: none;
-  height: 100px;
-
+  width: 100%;
+  height: 80px;
   border: 10px solid #0cb50c;
   border-radius: 10px;
-
   font-family: inherit;
   font-size: 40px;
-
   background-color: #ea1212;
   color: #ffffff;
 }
 
-.generate:focus {
-    border-color: #E6E020;
-
-    outline: none;
-}
-
 .result {
-    margin-top: 20px;
-    width: 500px;
-    height: 500px;
-    flex: none;
-
-    border: 10px solid #E6E020;
-    border-radius: 10px;
-
-    padding: 15px;
-
-    background: #FFFFFF;
+  width: 30%;
+  border: 10px solid #E6E020;
+  border-radius: 10px;
+  padding: 15px;
+  background: #FFFFFF;
+  margin-top: 20px;
 }
 
 .result a {
-    color: blue;
+  color: blue;
 }
 
 .result.none {
-    display: none;
+  display: none;
 }
 
 .result.error {
-    border-color: #EA1212;
-
-    color: #EA1212;
+  border-color: #EA1212;
+  color: #EA1212;
 }
 
 .result-table {
-    table-layout: fixed;
-
-    width: 100%;
+  table-layout: fixed;
+  width: 100%;
 }
 
 .result-name {
-    width: 30%;
-
-    padding: 5px 8px;
+  width: 30%;
+  padding: 5px 8px;
 }
 
 .result-link {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
+/* Add a media query for small screens */
+@media only screen and (max-width: 600px) {
+  .input {
+    height: 150px;
+  }
+
+  .generate {
+    height: 60px;
+    font-size: 30px;
+  }
+
+  .result {
+    height: auto;
+    width: 70%;
+  }
 }
