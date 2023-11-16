@@ -1,0 +1,35 @@
+.wrapper {
+  margin: auto;
+  padding: 20px;
+  width: 40%;
+  background: repeating-linear-gradient(
+    45deg,
+    #5cc48a,
+    #5cc48a 30px,
+    #ffffff 30px,
+    #ffffff 60px,
+    #ef3d3d 60px,
+    #ef3d3d 90px,
+    #ffffff 90px,
+    #ffffff 120px
+  );
+
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
+  font-family: "Comic Sans MS";
+}
+
+.content {
+  padding: 40px;
+
+  background: #ffffff;
+
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.pairing {
+  font-size: 80px;
+}

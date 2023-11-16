@@ -1,0 +1,99 @@
+.container {
+  display: flex;
+}
+.input {
+  display: block;
+  align-self: stretch;
+
+  width: 450px;
+  height: 500px;
+  flex: auto;
+
+  border: 10px solid #0cb50c;
+  border-radius: 10px;
+
+  padding: 15px;
+
+  background-color: rgba(255, 255, 255, 0.7);
+  outline: none;
+}
+
+.part {
+  display: flex;
+  flex-direction: column;
+
+  padding: 20px;
+}
+
+.generate {
+  display: block;
+
+  margin-top: 20px;
+  width: 500px;
+
+  flex: none;
+  height: 100px;
+
+  border: 10px solid #0cb50c;
+  border-radius: 10px;
+
+  font-family: inherit;
+  font-size: 40px;
+
+  background-color: #ea1212;
+  color: #ffffff;
+}
+
+.generate:focus {
+    border-color: #E6E020;
+
+    outline: none;
+}
+
+.result {
+    margin-top: 20px;
+    width: 500px;
+    height: 500px;
+    flex: none;
+
+    border: 10px solid #E6E020;
+    border-radius: 10px;
+
+    padding: 15px;
+
+    background: #FFFFFF;
+}
+
+.result a {
+    color: blue;
+}
+
+.result.none {
+    display: none;
+}
+
+.result.error {
+    border-color: #EA1212;
+
+    color: #EA1212;
+}
+
+.result-table {
+    table-layout: fixed;
+
+    width: 100%;
+}
+
+.result-name {
+    width: 30%;
+
+    padding: 5px 8px;
+}
+
+.result-link {
+    width: 100%;
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
