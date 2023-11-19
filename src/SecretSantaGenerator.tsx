@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import "./santa.css";
 
 interface Person {
+  id: number;
   name: string;
-  pairing: string;
+  pairingId: string;
 }
 
 const SecretSantaGenerator: React.FC = () => {
@@ -28,8 +29,9 @@ const SecretSantaGenerator: React.FC = () => {
     const shuffledNames = shuffleArray(namesArray);
 
     const generatedPeople = namesArray.map((name, index) => ({
+      id: index + 1,
       name,
-      pairing: shuffledNames[index],
+      pairingId: btoa(shuffledNames[index]), // Encrypt the pairingId using Base64 encoding
     }));
 
     setPeople(generatedPeople);
@@ -52,11 +54,11 @@ const SecretSantaGenerator: React.FC = () => {
       <h1>Secret Santa Generator</h1>
       <div className="part">
         <form>
-            <textarea
-              className="input"
-              value={names}
-              onChange={handleNameInputChange}
-            />
+          <textarea
+            className="input"
+            value={names}
+            onChange={handleNameInputChange}
+          />
         </form>
 
         <button onClick={handleGeneratePairings} className="generate">
@@ -65,10 +67,10 @@ const SecretSantaGenerator: React.FC = () => {
       </div>
       <div className="result">
         {people.map((person) => (
-          <div key={person.name}>
+          <div key={person.id}>
             {person.name} -{" "}
             <a
-              href={`./pairing/${encodeURIComponent(person.name)}/${encodeURIComponent(person.pairing)}`}
+              href={`./pairing/${encodeURIComponent(person.name)}/${encodeURIComponent(person.pairingId)}`}
               target="_blank"
               rel="noopener noreferrer"
             >
