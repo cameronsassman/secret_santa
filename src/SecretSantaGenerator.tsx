@@ -81,15 +81,17 @@ const SecretSantaGenerator: React.FC = () => {
           <div key={person.id}>
             {person.name} -{" "}
             <a
-              href={`./pairing/${encodeURIComponent(person.name)}/${encodeURIComponent(person.pairingId)}`}
+              href={`./pairing/${encodeURIComponent(
+                person.name
+              )}/${encodeURIComponent(person.pairingId)}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               Keep this secret
             </a>{" "}
-            - Paired with: {person.pairing}{" "}
+            : {person.pairing}{" "}
             <button onClick={() => handleShareOnWhatsApp(person)}>
-              Share on WhatsApp
+              Share
             </button>
           </div>
         ))}
