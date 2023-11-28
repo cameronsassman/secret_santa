@@ -51,10 +51,15 @@ const SecretSantaGenerator: React.FC = () => {
   };
 
   const handleShareOnWhatsApp = (person: Person) => {
-    const message = `Secret Santa Pairing: ${person.name} - Keep this secret: ./pairing/${encodeURIComponent(person.name)}/${encodeURIComponent(person.pairingId)}`;
+    const message = `Secret Santa Pairing: ${person.name} - Keep this secret:`;
+  
+    // Construct the actual link using the person's name and pairingId
+    const pairingLink = `./pairing/${encodeURIComponent(person.name)}/${encodeURIComponent(person.pairingId)}`;
   
     // Construct the WhatsApp Web link
-    const webLink = `https://web.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+    const webLink = `https://web.whatsapp.com/send?text=${encodeURIComponent(
+      `${message} ${pairingLink}`
+    )}`;
   
     // Display a prompt to the user with the link
     if (window.confirm("To share on WhatsApp, click OK to open WhatsApp Web.")) {
