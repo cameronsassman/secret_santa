@@ -1,4 +1,3 @@
-// App.tsx
 import React, { useState } from "react";
 import "./santa.css";
 
@@ -6,6 +5,7 @@ interface Person {
   id: number;
   name: string;
   pairingId: string;
+  pairing?: string; // New property to store the paired name
 }
 
 const SecretSantaGenerator: React.FC = () => {
@@ -31,7 +31,8 @@ const SecretSantaGenerator: React.FC = () => {
     const generatedPeople = namesArray.map((name, index) => ({
       id: index + 1,
       name,
-      pairingId: btoa(shuffledNames[index]), // Encrypt the pairingId using Base64 encoding
+      pairingId: btoa(shuffledNames[index]),
+      pairing: shuffledNames[index], // Set the paired name
     }));
 
     setPeople(generatedPeople);
@@ -47,6 +48,16 @@ const SecretSantaGenerator: React.FC = () => {
       ];
     }
     return shuffledArray;
+  };
+
+  const handleShareOnWhatsApp = (person: Person) => {
+    const whatsappLink = `https://wa.me/?text=Secret%20Santa%20Pairing%0A${encodeURIComponent(
+      `${person.name} - Keep this secret: ./pairing/${encodeURIComponent(
+        person.name
+      )}/${encodeURIComponent(person.pairingId)}`
+    )}`;
+
+    window.open(whatsappLink, "_blank");
   };
 
   return (
@@ -75,7 +86,11 @@ const SecretSantaGenerator: React.FC = () => {
               rel="noopener noreferrer"
             >
               Keep this secret
-            </a>
+            </a>{" "}
+            - Paired with: {person.pairing}{" "}
+            <button onClick={() => handleShareOnWhatsApp(person)}>
+              Share on WhatsApp
+            </button>
           </div>
         ))}
       </div>
