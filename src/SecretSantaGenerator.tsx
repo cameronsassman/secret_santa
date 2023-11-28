@@ -62,12 +62,23 @@ const SecretSantaGenerator: React.FC = () => {
       message
     )}`;
 
-    // Display a prompt to the user with the link
-    if (
-      window.confirm("To share on WhatsApp, click OK to open WhatsApp Web.")
-    ) {
-      window.open(webLink, "_blank");
-    }
+    // Try to open the WhatsApp app on mobile
+    const mobileLink = `whatsapp://send?text=${encodeURIComponent(message)}`;
+    window.location.href = mobileLink;
+
+    setTimeout(() => {
+      if (
+        window.confirm("To share on WhatsApp, click OK to open WhatsApp Web.")
+      ) {
+        window.open(webLink, "_blank");
+      }
+    }, 2000);
+
+    // if (
+    //   window.confirm("To share on WhatsApp, click OK to open WhatsApp Web.")
+    // ) {
+    //   window.open(webLink, "_blank");
+    // }
   };
 
   return (
