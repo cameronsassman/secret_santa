@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./santa.css";
 
 interface Person {
@@ -53,7 +54,7 @@ const SecretSantaGenerator: React.FC = () => {
   const handleShareOnWhatsApp = (person: Person) => {
     const message = `Secret Santa Pairing: ${
       person.name
-    } - Keep this secret: https://jt-secret-santa.netlify.app/pairing/${encodeURIComponent(
+    } - Keep this secret: https://ordinary-secret-santa.netlify.app/pairing/${encodeURIComponent(
       person.name
     )}/${encodeURIComponent(person.pairingId)}`;
 
@@ -101,16 +102,16 @@ const SecretSantaGenerator: React.FC = () => {
         {people.map((person) => (
           <div key={person.id}>
             {person.name} -{" "}
-            <a
-              href={`./pairing/${encodeURIComponent(
+            <Link
+              to={`/pairing/${encodeURIComponent(
                 person.name
               )}/${encodeURIComponent(person.pairingId)}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               Keep this secret
-            </a>{" "}
-            : {person.pairing}{" "}
+            </Link>{" "}
+            : {" "}
             <button onClick={() => handleShareOnWhatsApp(person)}>Share</button>
           </div>
         ))}
